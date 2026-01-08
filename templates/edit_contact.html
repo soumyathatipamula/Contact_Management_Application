@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Contact</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<body class="bg-light">
+<div class="container mt-4">
+    <h2>Edit Contact</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+    <form method="post">
+        <div class="mb-3">
+            <label>First Name</label>
+            <input class="form-control" name="first_name" value="{{ contact.first_name }}">
+        </div>
+        <div class="mb-3">
+            <label>Last Name</label>
+            <input class="form-control" name="last_name" value="{{ contact.last_name }}">
+        </div>
+        <div class="mb-3">
+            <label>Address</label>
+            <input class="form-control" name="address" value="{{ contact.address }}">
+        </div>
+        <div class="mb-3">
+            <label>Email</label>
+            <input class="form-control" name="email" value="{{ contact.email }}">
+        </div>
+        <div class="mb-3">
+            <label>Phone</label>
+            <input class="form-control" name="phone" value="{{ contact.phone }}">
+        </div>
+        <button class="btn btn-success">Update</button>
+        <a href="/" class="btn btn-secondary">Back</a>
+    </form>
+</div>
+</body>
+</html>
